@@ -2,7 +2,11 @@ import streamlit as st
 import os
 import json
 import time
-from google import genai
+# Replace your previous google import block with this:
+try:
+    from google import genai
+except ImportError:
+    import genai
 
 # --- PAGE SETUP ---
 st.set_page_config(page_title="LEX Model Trainer", page_icon="⚖️", layout="wide")
