@@ -2,11 +2,15 @@ import streamlit as st
 import os
 import json
 import time
-# Replace your previous google import block with this:
+# Dynamic import for optional genai dependency (avoids static import errors in editors)
+import importlib
 try:
-    from google import genai
-except ImportError:
-    import genai
+    genai = importlib.import_module("google.genai")
+except Exception:
+    try:
+        genai = importlib.import_module("genai")
+    except Exception:
+        genai = None
 
 # --- PAGE SETUP ---
 st.set_page_config(page_title="LEX Model Trainer", page_icon="⚖️", layout="wide")
